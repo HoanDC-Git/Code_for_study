@@ -9,8 +9,8 @@ Kiến trúc tổng quan:
   │   Service      : TTSPlayer, pypinyin                    │
   │                                                         │
   │   Tabs:                                                 │
-  │     [1] Ôn Tập      — flashcard SRS                    │
-  │     [2] Quản Lý     — Treeview CRUD + Tạo ghi chú      │
+  │     [1] Ôn Tập      — flashcard SRS                     │
+  │     [2] Quản Lý     — Treeview CRUD + Tạo ghi chú       │
   │     [3] Dashboard   — Matplotlib 2x2                    │
   │     [4] Sổ Tay      — GrammarTab (Master-Detail)        │
   └─────────────────────────────────────────────────────────┘
@@ -25,6 +25,7 @@ Kết nối DB → UI:
 from __future__ import annotations
 
 import os
+import sys
 import threading
 import time
 from datetime import datetime, timedelta
@@ -72,7 +73,7 @@ PINYIN_FONT_SIZE  = 40
 UI_FONT_SIZE      = 18
 TABLE_FONT_SIZE   = 16
 TABLE_ROW_HEIGHT  = 50
-HANZI_FONT_NAME   = "Ma Shan Zheng"
+HANZI_FONT_NAME   = "AR PL UKai CN"
 FADE_STEPS        = 12
 FADE_MS           = 18
 
@@ -206,7 +207,11 @@ class ChineseLearningApp(ctk.CTk):
             self.session.close()
         except Exception:
             pass
+        self.quit()
+
         self.destroy()
+
+        sys.exit(0)
 
     # ── Build tabs ────────────────────────────────────────────
 
